@@ -1,6 +1,6 @@
-
+import React from 'react';
 import './App.css';
-import "./Weather";
+import Weather from "./Weather";
 
 function App() {
   return (
@@ -9,12 +9,12 @@ function App() {
       <h1> Weather App </h1>
       <Weather />
       <footer> This project was coded by {" "} 
-      <a href="SarahClarke.io" target="_blank">
+      <a href="SarahClarke.io" target="_blank" rel="noopener noreferrer">
         Sarah Clarke
       </a>{" "}
       and is {" "}
-      <a href="https://github.com/ClarSar/react-weather-app-2.0.git" target="_blank">
-        open sourced on github</a>
+      <a href="https://github.com/ClarSar/react-weather-app-2.0.git" target="_blank" rel="noopener noreferrer">
+        Open Sourced on Github</a>
       </footer>
     </div>
     </div>
