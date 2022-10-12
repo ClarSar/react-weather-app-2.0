@@ -18,17 +18,17 @@ function handleResponse (response) {
       description: response.data.weather[0].description,
       icon:response.data.weather[0].icon,
       city: response.data.name,
-      percipitation: 72,
       humidity: response.data.main.humidity
 
     });
-    
+  
 }
 
 function search() {
 const apiKey= "749d11da7cc4bf5dcb36a5fdf40ecee1";
  let apiUrl= `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(handleResponse);
+
 }
 
 function handleSubmit(event){
