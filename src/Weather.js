@@ -38,13 +38,16 @@ let lat= position.coordinates.lat;
 let lon= position.coordinates.lon;
 let apiKey= "749d11da7cc4bf5dcb36a5fdf40ecee1";
 let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
-    axios.get(apiUrl).then(handleResponse);
+    axios.get(apiUrl).then(handleSubmitPosition);
+}
+  
+  
+  function handleSubmitPosition(event){
+event.preventDefault();
+navigator.geolocation.getCurrentPosition(searchLocation);
   }
 
-  function currentLocation(event) {
-    event.preventDefault();
-    navigator.geolocation.getCurrentPosition(searchLocation);
-  }
+
 
 function handleSubmit(event){
     event.preventDefault();
@@ -71,7 +74,7 @@ if  (weatherData.ready) {
         
         <div className="col-3">
                 <button
-                onClick={currentLocation}
+                onClick={handleSubmitPosition}
                   className="btn btn-secondary w-100"
                   type="submit"
                   
