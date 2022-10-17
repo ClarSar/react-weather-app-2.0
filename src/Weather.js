@@ -33,6 +33,19 @@ axios.get(apiUrl).then(handleResponse);
 
 }
 
+function searchLocation(position) {
+let lat= position.coordinates.lat;
+let lon= position.coordinates.lon;
+let apiKey= "749d11da7cc4bf5dcb36a5fdf40ecee1";
+let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function currentLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
+  }
+
 function handleSubmit(event){
     event.preventDefault();
     search();
@@ -44,19 +57,31 @@ setCity(event.target.value);
 }
 
 
-
 if  (weatherData.ready) {
     return (<div className="Weather">
         <form onSubmit={handleSubmit}>
             <div className="row">
-                <div className="col-9">
+                <div className="col-6">
             <input type="search" placeholder="Enter a City" className="form-control" autoFocus= "on" onChange={handleCityChange} />
             </div>
             <div className="col-3">
         <input type="submit" value="Search" className="btn btn-primary w-100"/>
         </div>
-        </div>
-        </form>
+        
+        
+        <div className="col-3">
+                <button
+                onClick={currentLocation}
+                  className="btn btn-secondary w-100"
+                  type="submit"
+                  
+                >
+                  <i className="fa-solid fa-location-arrow"></i>
+                </button>
+       </div>   
+    </div>
+</form>
+
         <WeatherInfo data={weatherData} />
        <WeatherForecast coordinates={weatherData.coordinates}/>
         </div>
